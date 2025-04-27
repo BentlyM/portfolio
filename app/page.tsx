@@ -4,31 +4,32 @@ import { Code } from "@heroui/code";
 import { button as buttonStyles } from "@heroui/theme";
 
 import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+import { title } from "@/components/primitives";
+import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { FlippingTitle } from "@/components/flipping-title";
+import { TabContent } from "@/components/tab-content";
 
 export default function Home() {
   const roleTitles = [
     "Full Stack Developer",
     "Software Engineer",
-    "Aspiring Quant",
     "Hobbyist Programmer",
     "Tech Enthusiast",
   ];
 
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 min-h-[80vh]">
       <div className="inline-block max-w-lg text-center justify-center">
-        <h1 className="text-3xl font-bold">Welcome to my Portfolio</h1>
-        <FlippingTitle titles={roleTitles} className="my-4" />
+        <h1 className={title()}>Hi, I&apos;m Bently, a</h1>
 
-        <div className={subtitle({ class: "mt-4" })}>
-          Crafting elegant solutions with modern web technologies
+        <div className="flex justify-center items-center gap-2 my-4">
+          <FlippingTitle titles={roleTitles} />
         </div>
+
+        <TabContent />
       </div>
 
-      <div className="flex gap-3">
+      <div className="flex gap-3 mt-8">
         <Link
           className={buttonStyles({
             color: "primary",
@@ -46,6 +47,14 @@ export default function Home() {
         >
           <GithubIcon size={20} />
           GitHub
+        </Link>
+        <Link
+          isExternal
+          className={buttonStyles({ variant: "bordered", radius: "full" })}
+          href={siteConfig.links.linkedin}
+        >
+          <LinkedinIcon size={20} />
+          LinkedIn
         </Link>
       </div>
 
