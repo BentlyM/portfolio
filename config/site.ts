@@ -1,69 +1,35 @@
-export type SiteConfig = typeof siteConfig;
+export type SiteConfig = {
+  name: string;
+  description: string;
+  navItems: {
+    label: string;
+    href: string;
+  }[];
+  links: {
+    github: string;
+    linkedin: string;
+    resume: string;
+    contact: string;
+  };
+};
 
-export const siteConfig = {
-  name: "Next.js + HeroUI",
-  description: "Make beautiful websites regardless of your design experience.",
+export const siteConfig: SiteConfig = {
+  name: "John Doe | Portfolio",
+  description: "Professional portfolio showcasing my projects and skills in web development.",
   navItems: [
     {
       label: "Home",
       href: "/",
     },
     {
-      label: "Docs",
-      href: "/docs",
-    },
-    {
-      label: "Pricing",
-      href: "/pricing",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "About",
-      href: "/about",
-    },
-  ],
-  navMenuItems: [
-    {
-      label: "Profile",
-      href: "/profile",
-    },
-    {
-      label: "Dashboard",
-      href: "/dashboard",
-    },
-    {
       label: "Projects",
       href: "/projects",
     },
-    {
-      label: "Team",
-      href: "/team",
-    },
-    {
-      label: "Calendar",
-      href: "/calendar",
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
-    },
   ],
   links: {
-    github: "https://github.com/heroui-inc/heroui",
-    twitter: "https://twitter.com/hero_ui",
-    docs: "https://heroui.com",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
+    github: "https://github.com/bentlym",
+    linkedin: "https://www.linkedin.com/in/bently-metayer-707364265",
+    resume: "/resume.pdf",
+    contact: "/contact",
   },
 };
