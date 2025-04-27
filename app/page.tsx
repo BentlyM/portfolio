@@ -6,33 +6,38 @@ import { button as buttonStyles } from "@heroui/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
+import { FlippingTitle } from "@/components/flipping-title";
 
 export default function Home() {
+  const roleTitles = [
+    "Full Stack Developer",
+    "Software Engineer",
+    "Aspiring Quant",
+    "Hobbyist Programmer",
+    "Tech Enthusiast",
+  ];
+
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-xl text-center justify-center">
-        <span className={title()}>Make&nbsp;</span>
-        <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
-        <br />
-        <span className={title()}>
-          websites regardless of your design experience.
-        </span>
+      <div className="inline-block max-w-lg text-center justify-center">
+        <h1 className="text-3xl font-bold">Welcome to my Portfolio</h1>
+        <FlippingTitle titles={roleTitles} className="my-4" />
+
         <div className={subtitle({ class: "mt-4" })}>
-          Beautiful, fast and modern React UI library.
+          Crafting elegant solutions with modern web technologies
         </div>
       </div>
 
       <div className="flex gap-3">
         <Link
-          isExternal
           className={buttonStyles({
             color: "primary",
             radius: "full",
             variant: "shadow",
           })}
-          href={siteConfig.links.docs}
+          href="/projects"
         >
-          Documentation
+          View My Work
         </Link>
         <Link
           isExternal
@@ -47,7 +52,7 @@ export default function Home() {
       <div className="mt-8">
         <Snippet hideCopyButton hideSymbol variant="bordered">
           <span>
-            Get started by editing <Code color="primary">app/page.tsx</Code>
+            Currently open to <Code color="primary">new opportunities</Code>
           </span>
         </Snippet>
       </div>
