@@ -10,7 +10,7 @@ const TAB_DATA = [
     id: "about",
     content: (
       <p>
-        I'm a software engineer with a passion for building scalable and
+        I&apos;m a software engineer with a passion for building scalable and
         efficient systems.
       </p>
     ),
