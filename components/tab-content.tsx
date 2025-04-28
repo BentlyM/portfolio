@@ -20,18 +20,18 @@ const TAB_DATA = [
     id: "skills",
     content: (
       <ul className="flex flex-wrap gap-2 text-left list-none pl-0">
-        <li className="bg-gray-800 px-3 py-1 rounded-md text-sm">JavaScript</li>
-        <li className="bg-gray-800 px-3 py-1 rounded-md text-sm">TypeScript</li>
-        <li className="bg-gray-800 px-3 py-1 rounded-md text-sm">React.js</li>
-        <li className="bg-gray-800 px-3 py-1 rounded-md text-sm">Next.js</li>
-        <li className="bg-gray-800 px-3 py-1 rounded-md text-sm">Node.js</li>
-        <li className="bg-gray-800 px-3 py-1 rounded-md text-sm">MUI</li>
-        <li className="bg-gray-800 px-3 py-1 rounded-md text-sm">SQL</li>
-        <li className="bg-gray-800 px-3 py-1 rounded-md text-sm">
+        <li className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">JavaScript</li>
+        <li className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">TypeScript</li>
+        <li className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">React.js</li>
+        <li className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">Next.js</li>
+        <li className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">Node.js</li>
+        <li className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">MUI</li>
+        <li className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">SQL</li>
+        <li className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
           TailwindCSS
         </li>
-        <li className="bg-gray-800 px-3 py-1 rounded-md text-sm">Git</li>
-        <li className="bg-gray-800 px-3 py-1 rounded-md text-sm">Rust</li>
+        <li className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">Git</li>
+        <li className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">Rust</li>
       </ul>
     ),
   },
@@ -83,7 +83,7 @@ export const TabContent = () => {
           <TabButton
             key={tab.id}
             active={activeTab === tab.id}
-            selectTab={() => setActiveTab(tab.id)}
+            selectTabAction={() => setActiveTab(tab.id)}
           >
             {tab.title}
           </TabButton>

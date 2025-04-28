@@ -1,20 +1,22 @@
 "use client";
-
-import { useState } from "react";
 import { motion } from "framer-motion";
 
 interface TabButtonProps {
   active: boolean;
-  selectTab: () => void;
+  selectTabAction: () => void;
   children: React.ReactNode;
 }
 
-export const TabButton = ({ active, selectTab, children }: TabButtonProps) => {
+export const TabButton = ({
+  active,
+  selectTabAction,
+  children,
+}: TabButtonProps) => {
   return (
-    <button onClick={selectTab}>
+    <button onClick={selectTabAction}>
       <p
         className={`mr-3 cursor-pointer border-b-0 font-semibold transition-all duration-200 hover:text-white ${
-          active ? "text-white" : "text-[#ADB7BE]"
+          active ? "text-[#da32f7]" : "text-default-600"
         }`}
       >
         {children}
