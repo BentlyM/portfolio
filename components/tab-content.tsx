@@ -6,6 +6,16 @@ import { TabButton } from "./tab-button";
 
 const TAB_DATA = [
   {
+    title: "About",
+    id: "about",
+    content: (
+      <p>
+        I'm a software engineer with a passion for building scalable and
+        efficient systems.
+      </p>
+    ),
+  },
+  {
     title: "Skills",
     id: "skills",
     content: (
@@ -64,7 +74,7 @@ const TAB_DATA = [
 ];
 
 export const TabContent = () => {
-  const [activeTab, setActiveTab] = useState("skills");
+  const [activeTab, setActiveTab] = useState("about");
 
   return (
     <div className="mt-8">
