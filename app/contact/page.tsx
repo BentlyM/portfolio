@@ -40,7 +40,7 @@ export default function ContactPage() {
 
   return (
     <section className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)]">
-      <div className="w-full max-w-7xl px-4">
+      <div className="max-w-7xl px-4">
         <h1 className={`${title()} mb-12 text-center`}>Contact</h1>
 
         <div className="grid gap-16 md:grid-cols-2">
@@ -57,7 +57,7 @@ export default function ContactPage() {
             <div className="mb-8">
               <h3 className="text-lg font-medium mb-3">Contact Details</h3>
               <p className="mb-2">Email: contact@example.com</p>
-              <p>Location: New York, NY</p>
+              <p>Location: Fort Lauderdale, FL</p>
             </div>
 
             <div className="socials flex flex-row gap-4 mb-8">
