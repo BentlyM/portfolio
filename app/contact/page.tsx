@@ -46,12 +46,12 @@ export default function ContactPage() {
         <div className="grid gap-16 md:grid-cols-2">
           {/* Left column - Info */}
           <div>
-            <h2 className={subtitle({ class: "mb-6" })}>Let's Connect</h2>
+            <h2 className={subtitle({ class: "mb-6" })}>Let&apos;s Connect</h2>
             <p className="mb-8 max-w-md">
-              I'm currently looking for new opportunities, and my inbox is
+              I&apos;m currently looking for new opportunities, and my inbox is
               always open. Whether you have a question, a project idea, or just
-              want to say hi, I'll try my best to get back to you as soon as
-              possible!
+              want to say hi, I&apos;ll try my best to get back to you as soon
+              as possible!
             </p>
 
             <div className="mb-8">
@@ -157,7 +157,7 @@ export default function ContactPage() {
 
               {submitSuccess && (
                 <div className="mt-2 p-3 bg-success-100/20 text-success rounded-lg text-sm">
-                  Message sent successfully! I'll get back to you soon.
+                  Message sent successfully! I&apos;ll get back to you soon.
                 </div>
               )}
             </form>
