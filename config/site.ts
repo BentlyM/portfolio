@@ -29,7 +29,7 @@ export const siteConfig: SiteConfig = {
   links: {
     github: "https://github.com/bentlym",
     linkedin: "https://www.linkedin.com/in/bently-metayer-707364265",
-    resume: "/resume.pdf",
+    resume: "resume.pdf",
     contact: "/contact",
   },
 };
