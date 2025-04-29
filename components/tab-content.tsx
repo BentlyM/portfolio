@@ -77,7 +77,7 @@ export const TabContent = () => {
   const [activeTab, setActiveTab] = useState("about");
 
   return (
-    <div className="mt-8">
+    <div>
       <div className="flex flex-row justify-center mb-4">
         {TAB_DATA.map((tab) => (
           <TabButton
@@ -89,7 +89,7 @@ export const TabContent = () => {
           </TabButton>
         ))}
       </div>
-      <div className="mt-4 max-w-[500px] min-w-[500px] max-h-[64px] min-h-[64px] overflow-y-auto">
+      <div className="mt-4 max-w-[500px] max-h-[64px] min-h-[64px] overflow-y-auto">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -97,7 +97,7 @@ export const TabContent = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.15 }}
-            className="text-left"
+            className="text-center"
           >
             {TAB_DATA.find((tab) => tab.id === activeTab)?.content}
           </motion.div>

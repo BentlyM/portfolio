@@ -25,11 +25,11 @@ export default function Home() {
         <div className="flex justify-center items-center gap-2 my-4">
           <FlippingTitle titles={roleTitles} />
         </div>
-
-        <TabContent />
       </div>
 
-      <div className="flex gap-3 mt-8">
+      <TabContent />
+
+      <div className="flex gap-3 mt-4 flex-wrap justify-center">
         <Link
           className={buttonStyles({
             color: "primary",
