@@ -11,7 +11,7 @@ export const Logo: React.FC<{
 }> = ({ size = 36, width, height, ...props }) => (
   <Image
     height={size || Number(height!)}
-    src="/logo.png"
+    src="logo.png"
     alt="Logo"
     width={size || Number(width!)}
     {...props}
