@@ -66,8 +66,6 @@ export default function Projects() {
   return (
     <section className="flex flex-row items-center justify-center py-8 md:py-10">
       <div className="w-full px-4">
-        <h1 className={`${title()} mb-12 text-center`}>Projects</h1>
-
         <ul className="mt-8">
           {projects.map((project, index) => (
             <li key={index} className="mb-12">
