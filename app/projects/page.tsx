@@ -1,6 +1,4 @@
-import Link from "next/link";
 import Image from "next/image";
-import { title } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 
 interface Project {
@@ -21,7 +19,7 @@ const projects: Project[] = [
     link: "https://bentlym.github.io/portfolio",
     github: "https://github.com/bentlym/portfolio",
     stars: 12,
-    image: "/projects/portfolio.png",
+    image: "projects/portfolio.png",
     technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
   },
   {
@@ -31,7 +29,7 @@ const projects: Project[] = [
     link: "https://flow-app-demo.vercel.app",
     github: "https://github.com/BentlyM/flow",
     stars: 45,
-    image: "/projects/flow.png",
+    image: "projects/flow.png",
     technologies: ["Next.js", "tailwind", "Rust", "PostgreSQL", "TypeScript"],
   },
   {
@@ -41,7 +39,7 @@ const projects: Project[] = [
     link: "https://battleship-woad.vercel.app",
     github: "https://github.com/BentlyM/battleship",
     stars: 28,
-    image: "/projects/battleship-game.png",
+    image: "projects/battleship-game.png",
     technologies: [
       "Next.js",
       "tailwind",
@@ -57,7 +55,7 @@ const projects: Project[] = [
     link: "https://library-management-app-tau.vercel.app/",
     github: "https://github.com/BentlyM/library-management-app-next",
     stars: 67,
-    image: "/projects/library-management-app.png",
+    image: "projects/library-management-app.png",
     technologies: ["Next.js", "MUI", "Node.js", "Stripe API", "Supabase"],
   },
 ];
