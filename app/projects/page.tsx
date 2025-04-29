@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { title } from "@/components/primitives";
+import { GithubIcon } from "@/components/icons";
 
 interface Project {
   title: string;
@@ -24,41 +25,47 @@ const projects: Project[] = [
     technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
   },
   {
-    title: "Task Manager",
+    title: "Flow",
     description:
       "A full-stack task management application with user authentication, task creation, editing, and filtering capabilities. Includes drag-and-drop functionality and priority settings.",
-    link: "https://task-manager-demo.vercel.app",
-    github: "https://github.com/bentlym/task-manager",
+    link: "https://flow-app-demo.vercel.app",
+    github: "https://github.com/BentlyM/flow",
     stars: 45,
-    image: "/projects/task-manager.png",
-    technologies: ["React", "Node.js", "MongoDB", "Express", "JWT"],
+    image: "/projects/flow.png",
+    technologies: ["Next.js", "tailwind", "Rust", "PostgreSQL", "TypeScript"],
   },
   {
-    title: "Weather Dashboard",
+    title: "BattleShip Game",
     description:
-      "An interactive weather dashboard that displays current weather conditions and forecasts for any location. Features include geolocation, search history, and detailed weather metrics.",
-    link: "https://weather-app-demo.vercel.app",
-    github: "https://github.com/bentlym/weather-app",
+      "A fully functional battle ship game with a user interface and a backend API. Features include a game board, a ship placement, data persistence, and a game play.",
+    link: "https://battleship-woad.vercel.app",
+    github: "https://github.com/BentlyM/battleship",
     stars: 28,
-    image: "/projects/weather-app.png",
-    technologies: ["JavaScript", "OpenWeather API", "Chart.js", "CSS3"],
+    image: "/projects/battleship-game.png",
+    technologies: [
+      "Next.js",
+      "tailwind",
+      "Neon db",
+      "Better-auth",
+      "Socket.io",
+    ],
   },
   {
-    title: "E-commerce Platform",
+    title: "Library Management App",
     description:
-      "A fully functional e-commerce platform with product listings, shopping cart, checkout process, and user accounts. Includes admin dashboard for product management.",
-    link: "https://ecommerce-demo.vercel.app",
-    github: "https://github.com/bentlym/ecommerce-platform",
+      "A fully functional library management app with book listings, SaaS process, and user accounts. Includes admin dashboard for book management.",
+    link: "https://library-management-app-tau.vercel.app/",
+    github: "https://github.com/BentlyM/library-management-app-next",
     stars: 67,
-    image: "/projects/ecommerce.png",
-    technologies: ["React", "Redux", "Node.js", "Stripe API", "MongoDB"],
+    image: "/projects/library-management-app.png",
+    technologies: ["Next.js", "MUI", "Node.js", "Stripe API", "Supabase"],
   },
 ];
 
 export default function Projects() {
   return (
-    <section className="flex flex-col items-center justify-center py-8 md:py-10">
-      <div className="w-full max-w-5xl px-4">
+    <section className="flex flex-row items-center justify-center py-8 md:py-10">
+      <div className="w-full px-4">
         <h1 className={`${title()} mb-12 text-center`}>Projects</h1>
 
         <ul className="mt-8">
@@ -69,7 +76,7 @@ export default function Projects() {
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-default-100/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
 
                 {/* Project image */}
-                <div className="z-10 sm:order-1 sm:col-span-2">
+                <div className="z-10 sm:order-1 sm:col-span-2 relative">
                   <div className="aspect-[16/9] w-full rounded-lg bg-default-200/50 overflow-hidden">
                     {project.image && (
                       <Image
@@ -82,6 +89,15 @@ export default function Projects() {
                       />
                     )}
                   </div>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="absolute bottom-3 right-3 p-2 rounded-full bg-default-100/80 backdrop-blur-sm hover:bg-default-200/80 transition-colors"
+                    aria-label={`View ${project.title} on GitHub`}
+                  >
+                    <GithubIcon size={20} />
+                  </a>
                 </div>
 
                 {/* Project details */}

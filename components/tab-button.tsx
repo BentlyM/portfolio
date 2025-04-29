@@ -15,7 +15,7 @@ export const TabButton = ({
   return (
     <button onClick={selectTabAction}>
       <p
-        className={`mr-3 cursor-pointer border-b-0 font-semibold transition-all duration-200 hover:text-white ${
+        className={`mr-3 cursor-pointer border-b-0 font-semibold transition-all duration-200 ${
           active ? "text-[#da32f7]" : "text-default-600"
         }`}
       >
