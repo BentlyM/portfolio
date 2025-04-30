@@ -18,7 +18,7 @@ const projects: Project[] = [
       "A modern, responsive portfolio website built with Next.js and Tailwind CSS. Features a clean design, dark mode support, and interactive elements.",
     link: "https://bentlym.github.io/portfolio",
     github: "https://github.com/bentlym/portfolio",
-    stars: 12,
+    stars: 0,
     image: "projects/portfolio.png",
     technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
   },
@@ -28,7 +28,7 @@ const projects: Project[] = [
       "A full-stack task management application with user authentication, task creation, editing, and filtering capabilities. Includes drag-and-drop functionality and priority settings.",
     link: "https://flow-app-demo.vercel.app",
     github: "https://github.com/BentlyM/flow",
-    stars: 45,
+    stars: 0,
     image: "projects/flow.png",
     technologies: ["Next.js", "tailwind", "Rust", "PostgreSQL", "TypeScript"],
   },
@@ -38,7 +38,7 @@ const projects: Project[] = [
       "A fully functional battle ship game with a user interface and a backend API. Features include a game board, a ship placement, data persistence, and a game play.",
     link: "https://battleship-woad.vercel.app",
     github: "https://github.com/BentlyM/battleship",
-    stars: 28,
+    stars: 0,
     image: "projects/battleship-game.png",
     technologies: [
       "Next.js",
@@ -54,7 +54,7 @@ const projects: Project[] = [
       "A fully functional library management app with book listings, SaaS process, and user accounts. Includes admin dashboard for book management.",
     link: "https://library-management-app-tau.vercel.app/",
     github: "https://github.com/BentlyM/library-management-app-next",
-    stars: 67,
+    stars: 0,
     image: "projects/library-management-app.png",
     technologies: ["Next.js", "MUI", "Node.js", "Stripe API", "Supabase"],
   },
@@ -62,7 +62,7 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <section className="flex flex-row items-center justify-center py-8 md:py-10">
+    <section className="flex flex-col items-center justify-center py-8 md:py-10">
       <div className="w-full px-4">
         <ul className="mt-8">
           {projects.map((project, index) => (
@@ -97,7 +97,7 @@ export default function Projects() {
                 </div>
 
                 {/* Project details */}
-                <div className="z-10 sm:order-2 sm:col-span-6">
+                <div className="z-10 sm:order-2 sm:col-span-6 relative">
                   <h3>
                     <a
                       className="inline-flex items-baseline font-medium leading-tight group/link text-base"
