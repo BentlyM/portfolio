@@ -23,6 +23,7 @@ import { ResumeModal } from "@/components/resume-modal";
 
 export const Navbar = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const openResumeModal = () => {
     setIsResumeModalOpen(true);
@@ -32,12 +33,18 @@ export const Navbar = () => {
     setIsResumeModalOpen(false);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
       <NextUINavbar
         maxWidth="xl"
         position="sticky"
         className="bg-background/60 backdrop-blur-lg"
+        isMenuOpen={isMenuOpen}
+        onMenuOpenChange={setIsMenuOpen}
       >
         <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
           <NavbarBrand as="li" className="gap-3 max-w-fit">
@@ -104,7 +111,12 @@ export const Navbar = () => {
           <div className="mx-4 mt-2 flex flex-col gap-2">
             {siteConfig.navItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`}>
-                <Link color="foreground" href={item.href} size="lg">
+                <Link
+                  color="foreground"
+                  href={item.href}
+                  size="lg"
+                  onClick={closeMenu}
+                >
                   {item.label}
                 </Link>
               </NavbarMenuItem>
@@ -112,7 +124,10 @@ export const Navbar = () => {
             <NavbarMenuItem>
               <Link
                 color="primary"
-                onClick={openResumeModal}
+                onClick={() => {
+                  closeMenu();
+                  openResumeModal();
+                }}
                 size="lg"
                 className="cursor-pointer"
               >
@@ -120,7 +135,12 @@ export const Navbar = () => {
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
-              <Link color="primary" href={siteConfig.links.contact} size="lg">
+              <Link
+                color="primary"
+                href={siteConfig.links.contact}
+                size="lg"
+                onClick={closeMenu}
+              >
                 Contact Me
               </Link>
             </NavbarMenuItem>
