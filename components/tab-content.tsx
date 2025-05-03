@@ -57,16 +57,16 @@ const TAB_DATA = [
     content: (
       <ul className="text-left list-none pl-0 space-y-2">
         <li className="border-l-2 border-purple-300 pl-3">
-          <h3 className="font-medium">AWS Certified Developer</h3>
+          <h3 className="font-medium">Certified Cool Guy</h3>
           <p className="text-gray-400 text-sm">Issued 2023</p>
         </li>
         <li className="border-l-2 border-purple-300 pl-3">
-          <h3 className="font-medium">Google Cloud Professional</h3>
+          <h3 className="font-medium">Ultimate Vibe Code Master</h3>
           <p className="text-gray-400 text-sm">Issued 2022</p>
         </li>
         <li className="border-l-2 border-purple-300 pl-3">
-          <h3 className="font-medium">Meta Frontend Developer</h3>
-          <p className="text-gray-400 text-sm">Issued 2021</p>
+          <h3 className="font-medium">Educated in the School of Life</h3>
+          <p className="text-gray-400 text-sm">Issued 2024</p>
         </li>
       </ul>
     ),
