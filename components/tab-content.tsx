@@ -42,10 +42,10 @@ const TAB_DATA = [
       <ul className="text-left list-none pl-0 space-y-2">
         <li className="border-l-2 border-purple-300 pl-3">
           <h3 className="font-medium">
-            Bachelor of Science in Computer Science
+            Inspiring B.S. in Computer Science
           </h3>
           <p className="text-gray-400 text-sm">
-            University Name, Graduation Year
+            University of Florida, Graduation Year 2027
           </p>
         </li>
       </ul>
