@@ -23,14 +23,14 @@ const projects: Project[] = [
     technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
   },
   {
-    title: "Flow",
+    title: "GridNews",
     description:
-      "A full-stack task management application with user authentication, task creation, editing, and filtering capabilities. Includes drag-and-drop functionality and priority settings.",
-    link: "https://flow-app-demo.vercel.app",
-    github: "https://github.com/BentlyM/flow",
+      "A full-stack stock news application with user authentication, news creation, editing, and filtering capabilities. Includes drag-and-drop functionality and priority settings.",
+    link: "https://www.gridnews.io/",
+    github: "https://github.com/gridnews",
     stars: 0,
-    image: "projects/flow.png",
-    technologies: ["Next.js", "tailwind", "Rust", "PostgreSQL", "TypeScript"],
+    image: "projects/grid-news.png",
+    technologies: ["Next.js", "tailwind", "Rust", "Python" ,"PostgreSQL", "TypeScript"],
   },
   {
     title: "BattleShip Game",
