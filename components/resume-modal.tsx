@@ -170,30 +170,31 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
                 </Button>
               </div>
             </div>
-            <div className="flex-1 p-0 bg-white">
-              <object
-                data={siteConfig.links.resume}
-                type="application/pdf"
-                width="100%"
-                height="100%"
-                className="w-full h-full"
-              >
-                <iframe
-                  src={siteConfig.links.resume}
-                  title="Resume Preview"
-                  width="100%"
-                  height="100%"
-                  className="w-full h-full"
+            <div className="flex-1 flex flex-col items-center justify-center gap-6 p-8">
+              <p className="text-default-600 text-center text-sm">
+                View or download my resume.
+              </p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <Button
+                  as="a"
+                  href={siteConfig.links.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="primary"
+                  size="lg"
                 >
-                  <p>
-                    Your browser does not support PDFs.
-                    <a href={siteConfig.links.resume} download>
-                      Download the PDF
-                    </a>{" "}
-                    instead.
-                  </p>
-                </iframe>
-              </object>
+                  Open PDF in new tab
+                </Button>
+                <Button
+                  as="a"
+                  href={siteConfig.links.resume}
+                  download="Bently_Resume.pdf"
+                  variant="bordered"
+                  size="lg"
+                >
+                  Download PDF
+                </Button>
+              </div>
             </div>
           </motion.div>
         </motion.div>
