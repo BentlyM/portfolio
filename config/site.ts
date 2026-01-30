@@ -9,13 +9,14 @@ export type SiteConfig = {
     github: string;
     linkedin: string;
     contact: string;
+    resume: string;
   };
 };
 
 export const siteConfig: SiteConfig = {
   name: "Bently M | Portfolio",
   description:
-    "Professional portfolio showcasing my projects and skills in web development.",
+    "Systems Engineer and Full Stack Developer focused on high-performance infrastructure, CLI tooling, and Unix-based systems. Portfolio of scalable, production-grade software.",
   navItems: [
     {
       label: "Home",
@@ -30,5 +31,6 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/bentlym",
     linkedin: "https://www.linkedin.com/in/bently-metayer-707364265",
     contact: "/contact",
+    resume: "/Bently_Resume.pdf",
   },
 };

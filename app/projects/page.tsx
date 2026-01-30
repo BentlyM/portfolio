@@ -4,14 +4,37 @@ import { GithubIcon } from "@/components/icons";
 interface Project {
   title: string;
   description: string;
-  link: string;
-  github: string;
+  /** Live or demo URL; omit for NDA / in-development projects */
+  link?: string;
+  /** GitHub repo URL; omit for private / proprietary projects */
+  github?: string;
+  /** Video demo URL (e.g. YouTube); show "Watch demo" when set */
+  demoVideoUrl?: string;
   stars: number;
   image: string;
   technologies: string[];
 }
 
 const projects: Project[] = [
+  {
+    title: "Algo Trading CLI",
+    description:
+      "Architected a command-line interface for automated trade settlement and decentralized portfolio management. Built automated trading bots with advanced risk management, real-time analytics, and streaming modules. Private repository; video demo available.",
+    demoVideoUrl: "https://youtu.be/bHuXLNc-fPU",
+    image: "projects/Algo-trading.png",
+    stars: 0,
+    technologies: ["TypeScript", "Node.js", "Rust"],
+  },
+  {
+    title: "Gridnews",
+    description:
+      "Designed a scalable news aggregation platform using a grid-based UI and a high-concurrency Rust backend. Containerized environment using Docker for consistent cross-platform deployment and testing.",
+    link: "https://www.gridnews.io/",
+    github: "https://github.com/gridnews",
+    stars: 0,
+    image: "projects/grid-news.png",
+    technologies: ["TypeScript", "Next.js", "Node.js", "PostgreSQL", "Rust"],
+  },
   {
     title: "Portfolio Website",
     description:
@@ -21,42 +44,6 @@ const projects: Project[] = [
     stars: 0,
     image: "projects/portfolio.png",
     technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
-  },
-  {
-    title: "GridNews",
-    description:
-      "A full-stack stock news application with user authentication, news creation, editing, and filtering capabilities. Includes drag-and-drop functionality and priority settings.",
-    link: "https://www.gridnews.io/",
-    github: "https://github.com/gridnews",
-    stars: 0,
-    image: "projects/grid-news.png",
-    technologies: ["Next.js", "tailwind", "Rust", "Python" ,"PostgreSQL", "TypeScript"],
-  },
-  {
-    title: "BattleShip Game",
-    description:
-      "A fully functional battle ship game with a user interface and a backend API. Features include a game board, a ship placement, data persistence, and a game play.",
-    link: "https://battleship-woad.vercel.app",
-    github: "https://github.com/BentlyM/battleship",
-    stars: 0,
-    image: "projects/battleship-game.png",
-    technologies: [
-      "Next.js",
-      "tailwind",
-      "Neon db",
-      "Better-auth",
-      "Socket.io",
-    ],
-  },
-  {
-    title: "Library Management App",
-    description:
-      "A fully functional library management app with book listings, SaaS process, and user accounts. Includes admin dashboard for book management.",
-    link: "https://library-management-app-tau.vercel.app/",
-    github: "https://github.com/BentlyM/library-management-app-next",
-    stars: 0,
-    image: "projects/library-management-app.png",
-    technologies: ["Next.js", "MUI", "Node.js", "Stripe API", "Supabase"],
   },
 ];
 
@@ -73,8 +60,8 @@ export default function Projects() {
 
                 {/* Project image */}
                 <div className="z-10 sm:order-1 sm:col-span-2 relative">
-                  <div className="aspect-[16/9] w-full rounded-lg bg-default-200/50 overflow-hidden">
-                    {project.image && (
+                  <div className="aspect-[16/9] w-full rounded-lg bg-default-200/50 overflow-hidden flex items-center justify-center">
+                    {project.image ? (
                       <Image
                         src={project.image}
                         alt={`${project.title} preview`}
@@ -83,77 +70,113 @@ export default function Projects() {
                         className="w-full h-full object-cover"
                         unoptimized
                       />
+                    ) : (
+                      <span className="text-default-400 text-xs font-medium">
+                        {project.github ? "—" : "Private / NDA"}
+                      </span>
                     )}
                   </div>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="absolute bottom-3 right-3 p-2 rounded-full bg-default-100/80 backdrop-blur-sm hover:bg-default-200/80 transition-colors"
-                    aria-label={`View ${project.title} on GitHub`}
-                  >
-                    <GithubIcon size={20} />
-                  </a>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="absolute bottom-3 right-3 p-2 rounded-full bg-default-100/80 backdrop-blur-sm hover:bg-default-200/80 transition-colors"
+                      aria-label={`View ${project.title} on GitHub`}
+                    >
+                      <GithubIcon size={20} />
+                    </a>
+                  )}
                 </div>
 
                 {/* Project details */}
                 <div className="z-10 sm:order-2 sm:col-span-6 relative">
                   <h3>
-                    <a
-                      className="inline-flex items-baseline font-medium leading-tight group/link text-base"
-                      href={project.link}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      aria-label={`${project.title} (opens in a new tab)`}
-                    >
-                      <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                      <span>
-                        {project.title}
-                        <span className="inline-block">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px"
-                            aria-hidden="true"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                              clipRule="evenodd"
-                            ></path>
-                          </svg>
+                    {project.link ? (
+                      <a
+                        className="inline-flex items-baseline font-medium leading-tight group/link text-base"
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label={`${project.title} (opens in a new tab)`}
+                      >
+                        <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                        <span>
+                          {project.title}
+                          <span className="inline-block">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                              className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px"
+                              aria-hidden="true"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                                clipRule="evenodd"
+                              ></path>
+                            </svg>
+                          </span>
                         </span>
+                      </a>
+                    ) : (
+                      <span className="font-medium leading-tight text-base">
+                        {project.title}
                       </span>
-                    </a>
+                    )}
                   </h3>
 
                   <p className="mt-2 text-sm leading-normal">
                     {project.description}
                   </p>
 
-                  <a
-                    className="relative mt-2 inline-flex items-center text-sm font-medium"
-                    href={project.github}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label={`${project.stars} stars on GitHub (opens in a new tab)`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="mr-1 h-3 w-3"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>{project.stars}</span>
-                  </a>
+                  <div className="mt-2 flex flex-wrap items-center gap-3">
+                    {project.github && (
+                      <a
+                        className="inline-flex items-center text-sm font-medium"
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label={`${project.stars} stars on GitHub (opens in a new tab)`}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="mr-1 h-3 w-3"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                        <span>{project.stars}</span>
+                      </a>
+                    )}
+                    {project.demoVideoUrl && (
+                      <a
+                        className="inline-flex items-center text-sm font-medium text-primary"
+                        href={project.demoVideoUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label={`Watch ${project.title} demo video`}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="mr-1 h-3 w-3"
+                          aria-hidden="true"
+                        >
+                          <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                        </svg>
+                        Watch demo
+                      </a>
+                    )}
+                  </div>
 
                   <ul
                     className="mt-2 flex flex-wrap"

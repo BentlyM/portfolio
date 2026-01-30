@@ -11,10 +11,9 @@ import { TabContent } from "@/components/tab-content";
 
 export default function Home() {
   const roleTitles = [
+    "Systems Engineer",
     "Full Stack Developer",
     "Software Engineer",
-    "Hobbyist Programmer",
-    "Tech Enthusiast",
   ];
 
   return (
