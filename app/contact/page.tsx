@@ -1,20 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { title, subtitle } from "@/components/primitives";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 
+const CONTACT_EMAIL = "support@gridnews.io";
+const MIN_FORM_OPEN_MS = 5000; // Light bot deterrent: block instant submits
+
 export default function ContactPage() {
+  const [formReady, setFormReady] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     subject: "",
     message: "",
+    _gotcha: "", // Honeypot – leave empty; bots that fill it are ignored
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const t = setTimeout(() => setFormReady(true), MIN_FORM_OPEN_MS);
+    return () => clearTimeout(t);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -23,18 +33,28 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    if (formData._gotcha.trim().length > 0) return; // Honeypot filled = bot
+    if (!formReady) {
+      setSubmitError("Please wait a moment before sending.");
+      return;
+    }
 
-    setIsSubmitting(false);
+    const body = [
+      "",
+      `From: ${formData.email}`,
+      "",
+      formData.message,
+    ].join("\n");
+
+    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+
     setSubmitSuccess(true);
-    setFormData({ email: "", subject: "", message: "" });
-
-    // Reset success message after 5 seconds
+    setFormData({ email: "", subject: "", message: "", _gotcha: "" });
     setTimeout(() => setSubmitSuccess(false), 5000);
   };
 
@@ -56,7 +76,15 @@ export default function ContactPage() {
 
             <div className="mb-8">
               <h3 className="text-lg font-medium mb-3">Contact Details</h3>
-              <p className="mb-2">Email: contact@example.com</p>
+              <p className="mb-2">
+                Email:{" "}
+                <a
+                  href="mailto:support@gridnews.io"
+                  className="text-primary hover:underline"
+                >
+                  support@gridnews.io
+                </a>
+              </p>
               <p>Location: Fort Lauderdale, FL</p>
             </div>
 
@@ -86,6 +114,23 @@ export default function ContactPage() {
               onSubmit={handleSubmit}
               className="flex flex-col gap-6 p-6 rounded-lg border border-default-200/20"
             >
+              {/* Honeypot: hidden; bots that fill it are ignored */}
+              <div
+                className="absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden"
+                aria-hidden="true"
+              >
+                <label htmlFor="_gotcha">Don&apos;t fill this</label>
+                <input
+                  type="text"
+                  id="_gotcha"
+                  name="_gotcha"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData._gotcha}
+                  onChange={handleChange}
+                />
+              </div>
+
               <div>
                 <label
                   htmlFor="email"
@@ -149,15 +194,19 @@ export default function ContactPage() {
                 type="submit"
                 color="primary"
                 className="w-full"
-                isLoading={isSubmitting}
-                disabled={isSubmitting}
+                disabled={!formReady}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {!formReady ? "Please wait..." : "Open email to send"}
               </Button>
 
+              {submitError && (
+                <div className="mt-2 p-3 bg-danger-100/20 text-danger rounded-lg text-sm">
+                  {submitError}
+                </div>
+              )}
               {submitSuccess && (
                 <div className="mt-2 p-3 bg-success-100/20 text-success rounded-lg text-sm">
-                  Message sent successfully! I&apos;ll get back to you soon.
+                  Your email client should open. Send the message from there.
                 </div>
               )}
             </form>
