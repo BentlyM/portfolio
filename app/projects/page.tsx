@@ -2,48 +2,69 @@ import Image from "next/image";
 import { GithubIcon } from "@/components/icons";
 
 interface Project {
+  ticker: string;
   title: string;
   description: string;
   /** Live or demo URL; omit for NDA / in-development projects */
   link?: string;
   /** GitHub repo URL; omit for private / proprietary projects */
   github?: string;
-  /** Video demo URL (e.g. YouTube); show "Watch demo" when set */
+  /** Video demo URL (e.g. YouTube); shown as "Watch demo" when set */
   demoVideoUrl?: string;
-  stars: number;
-  image: string;
+  /** Omit for a ticker-tile placeholder (private / backend-only projects) */
+  image?: string;
   technologies: string[];
 }
 
 const projects: Project[] = [
   {
+    ticker: "ALGO",
     title: "Algo Trading CLI",
     description:
-      "Architected a command-line interface for automated trade settlement and decentralized portfolio management. Built automated trading bots with advanced risk management, real-time analytics, and streaming modules. Private repository; video demo available.",
+      "Automated trading against Interactive Brokers: order management and Redis-locked execution workers in TypeScript, a Rust core for the trading engine, market-data and news ingestion, and a backtesting harness. Private repository — there's a video demo instead.",
     demoVideoUrl: "https://youtu.be/bHuXLNc-fPU",
     image: "projects/Algo-trading.png",
-    stars: 0,
-    technologies: ["TypeScript", "Node.js", "Rust"],
+    technologies: ["TypeScript", "Rust", "Redis", "Interactive Brokers API"],
   },
   {
-    title: "Gridnews",
+    ticker: "GRID",
+    title: "GridNews",
     description:
-      "Designed a scalable news aggregation platform using a grid-based UI and a high-concurrency Rust backend. Containerized environment using Docker for consistent cross-platform deployment and testing.",
+      "Financial news aggregation and streaming platform, live at gridnews.io. A Turborepo monorepo with four services — API, frontend, stream, worker — on a Rust backend, containerized with Docker.",
     link: "https://www.gridnews.io/",
     github: "https://github.com/gridnews",
-    stars: 0,
     image: "projects/grid-news.png",
-    technologies: ["TypeScript", "Next.js", "Node.js", "PostgreSQL", "Rust"],
+    technologies: ["Rust", "Next.js", "PostgreSQL", "Docker"],
   },
   {
-    title: "Portfolio Website",
+    ticker: "SHIP",
+    title: "Battleship",
     description:
-      "A modern, responsive portfolio website built with Next.js and Tailwind CSS. Features a clean design, dark mode support, and interactive elements.",
+      "Two-player battleship in the browser. Real-time turns over Socket.io, ship placement and hit validation on the server, and games survive a refresh.",
+    link: "https://battleship-woad.vercel.app",
+    github: "https://github.com/BentlyM/battleship",
+    image: "projects/battleship-game.png",
+    technologies: ["Socket.io", "Next.js", "Neon"],
+  },
+  {
+    ticker: "LIBR",
+    title: "Library Management App",
+    description:
+      "Book catalog with borrowing, user accounts, Stripe-billed memberships, and an admin dashboard for managing the collection.",
+    link: "https://library-management-app-tau.vercel.app/",
+    github: "https://github.com/BentlyM/library-management-app-next",
+    image: "projects/library-management-app.png",
+    technologies: ["Next.js", "Stripe", "Supabase"],
+  },
+  {
+    ticker: "FOLIO",
+    title: "This Site",
+    description:
+      "Statically exported Next.js on GitHub Pages — no backend, nothing to silently fail. The contact address is assembled client-side so scrapers can't lift it.",
     link: "https://bentlym.github.io/portfolio",
     github: "https://github.com/bentlym/portfolio",
-    stars: 0,
     image: "projects/portfolio.png",
-    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
   },
 ];
 
@@ -52,15 +73,15 @@ export default function Projects() {
     <section className="flex flex-col items-center justify-center py-8 md:py-10">
       <div className="w-full px-4">
         <ul className="mt-8">
-          {projects.map((project, index) => (
-            <li key={index} className="mb-12">
+          {projects.map((project) => (
+            <li key={project.ticker} className="mb-12">
               <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                 {/* Hover background effect */}
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-default-100/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
 
-                {/* Project image */}
+                {/* Project image / ticker tile */}
                 <div className="z-10 sm:order-1 sm:col-span-2 relative">
-                  <div className="aspect-[16/9] w-full rounded-lg bg-default-200/50 overflow-hidden flex items-center justify-center">
+                  <div className="aspect-[16/9] w-full rounded-md border border-default-200 bg-default-100 overflow-hidden flex items-center justify-center">
                     {project.image ? (
                       <Image
                         src={project.image}
@@ -71,9 +92,14 @@ export default function Projects() {
                         unoptimized
                       />
                     ) : (
-                      <span className="text-default-400 text-xs font-medium">
-                        {project.github ? "—" : "Private / NDA"}
-                      </span>
+                      <div className="text-center font-mono">
+                        <span className="block text-lg font-semibold tracking-widest text-primary">
+                          {project.ticker}
+                        </span>
+                        <span className="text-xs text-default-400">
+                          {project.github ? "open source" : "private / NDA"}
+                        </span>
+                      </div>
                     )}
                   </div>
                   {project.github && (
@@ -81,7 +107,7 @@ export default function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="absolute bottom-3 right-3 p-2 rounded-full bg-default-100/80 backdrop-blur-sm hover:bg-default-200/80 transition-colors"
+                      className="absolute bottom-3 right-3 p-2 rounded-md bg-background/80 border border-default-200 hover:border-primary transition-colors"
                       aria-label={`View ${project.title} on GitHub`}
                     >
                       <GithubIcon size={20} />
@@ -91,7 +117,10 @@ export default function Projects() {
 
                 {/* Project details */}
                 <div className="z-10 sm:order-2 sm:col-span-6 relative">
-                  <h3>
+                  <p className="font-mono text-xs tracking-[0.2em] text-default-400">
+                    {project.ticker}
+                  </p>
+                  <h3 className="mt-1">
                     {project.link ? (
                       <a
                         className="inline-flex items-baseline font-medium leading-tight group/link text-base"
@@ -127,64 +156,38 @@ export default function Projects() {
                     )}
                   </h3>
 
-                  <p className="mt-2 text-sm leading-normal">
+                  <p className="mt-2 text-sm leading-normal text-default-600">
                     {project.description}
                   </p>
 
-                  <div className="mt-2 flex flex-wrap items-center gap-3">
-                    {project.github && (
-                      <a
-                        className="inline-flex items-center text-sm font-medium"
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        aria-label={`${project.stars} stars on GitHub (opens in a new tab)`}
+                  {project.demoVideoUrl && (
+                    <a
+                      className="mt-2 inline-flex items-center gap-1.5 font-mono text-sm text-primary hover:underline underline-offset-4"
+                      href={project.demoVideoUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="mr-1 h-3 w-3"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                        <span>{project.stars}</span>
-                      </a>
-                    )}
-                    {project.demoVideoUrl && (
-                      <a
-                        className="inline-flex items-center text-sm font-medium text-primary"
-                        href={project.demoVideoUrl}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        aria-label={`Watch ${project.title} demo video`}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="mr-1 h-3 w-3"
-                          aria-hidden="true"
-                        >
-                          <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                        </svg>
-                        Watch demo
-                      </a>
-                    )}
-                  </div>
+                        <path d="M8 5v14l11-7z"></path>
+                      </svg>
+                      Watch demo
+                    </a>
+                  )}
 
                   <ul
-                    className="mt-2 flex flex-wrap"
+                    className="mt-3 flex flex-wrap gap-2"
                     aria-label="Technologies used:"
                   >
-                    {project.technologies.map((tech, techIndex) => (
-                      <li key={techIndex} className="mr-1.5 mt-2">
-                        <div className="flex items-center rounded-full bg-default-100/50 px-3 py-1 text-xs font-medium leading-5">
+                    {project.technologies.map((tech) => (
+                      <li key={tech}>
+                        <div className="rounded-md border border-default-200 bg-default-100 px-2.5 py-0.5 font-mono text-xs leading-5">
                           {tech}
                         </div>
                       </li>

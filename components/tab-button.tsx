@@ -13,18 +13,18 @@ export const TabButton = ({
   children,
 }: TabButtonProps) => {
   return (
-    <button onClick={selectTabAction}>
-      <p
-        className={`mr-3 cursor-pointer border-b-0 font-semibold transition-all duration-200 ${
-          active ? "text-[#da32f7]" : "text-default-600"
+    <button onClick={selectTabAction} className="relative pb-2 mr-6">
+      <span
+        className={`cursor-pointer font-mono text-sm transition-colors duration-200 ${
+          active ? "text-primary" : "text-default-500 hover:text-default-700"
         }`}
       >
         {children}
-      </p>
+      </span>
       <motion.div
-        initial={{ width: active ? "calc(100% - 0.75rem)" : 0 }}
-        animate={{ width: active ? "calc(100% - 0.75rem)" : 0 }}
-        className="mr-3 mt-1 h-1 bg-purple-300 transition-all"
+        initial={{ width: active ? "100%" : 0 }}
+        animate={{ width: active ? "100%" : 0 }}
+        className="absolute bottom-0 left-0 h-0.5 bg-primary"
       />
     </button>
   );

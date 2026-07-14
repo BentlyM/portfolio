@@ -16,7 +16,7 @@ export type SiteConfig = {
 export const siteConfig: SiteConfig = {
   name: "Bently M | Portfolio",
   description:
-    "Systems Engineer and Full Stack Developer focused on high-performance infrastructure, CLI tooling, and Unix-based systems. Portfolio of scalable, production-grade software.",
+    "Bently M — software engineer building trading systems in TypeScript and Rust: an algo-trading engine and GridNews, a financial news streaming platform.",
   navItems: [
     {
       label: "Home",
