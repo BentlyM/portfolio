@@ -42,7 +42,6 @@ const projects: Project[] = [
     description:
       "A fast, terminal-based stock screener built in Rust. Configured with an asynchronous Tokio runtime and Reqwest for low-latency market data ingestion, custom filters (like RSI and P/E ratios), SQLx with SQLite for persistent local caching, and a Ratatui-based CLI dashboard with Plotters charting.",
     github: "https://github.com/BentlyM/rustiq",
-    image: "projects/rustiq-screener.png",
     technologies: ["Rust", "Tokio", "SQLx", "Ratatui", "Plotters"],
   },
 
