@@ -10,10 +10,8 @@ const TAB_DATA = [
     id: "about",
     content: (
       <p>
-        CS student at the University of Florida. I got into trading
-        infrastructure by building GridNews, then kept going down the stack —
-        from Next.js frontends to Rust backend services and automated
-        execution against real brokerage APIs.
+        CS student at Broward College (aspiring University of Florida transfer).
+        My focus is on low-latency systems and data-heavy applications. I enjoy working across the stack, but I&apos;m most interested in backend and systems architecture.
       </p>
     ),
   },
@@ -29,8 +27,12 @@ const TAB_DATA = [
           "Next.js",
           "Node.js",
           "PostgreSQL",
+          "SQLite",
           "Redis",
           "Docker",
+          "Ratatui",
+          "WebSockets",
+          "Turborepo",
         ].map((skill) => (
           <li
             key={skill}
@@ -48,9 +50,9 @@ const TAB_DATA = [
     content: (
       <ul className="text-left list-none pl-0 space-y-2">
         <li className="border-l-2 border-primary pl-3">
-          <h3 className="font-medium">B.S. in Computer Science (in progress)</h3>
+          <h3 className="font-medium">A.S. / A.A. in Computer Science (in progress)</h3>
           <p className="text-default-500 text-sm">
-            University of Florida · Expected 2027
+            Broward College · Expected 2027 (Aspiring University of Florida transfer)
           </p>
         </li>
       </ul>
@@ -68,9 +70,9 @@ const TAB_DATA = [
           </p>
         </li>
         <li className="border-l-2 border-primary pl-3">
-          <h3 className="font-medium">Systems programming</h3>
+          <h3 className="font-medium">Systems & TUI programming</h3>
           <p className="text-default-500 text-sm">
-            Rust services for streaming and data-heavy backends
+            Rust services for streaming, data-heavy backends, and terminal tools (Ratatui)
           </p>
         </li>
         <li className="border-l-2 border-primary pl-3">
@@ -82,13 +84,66 @@ const TAB_DATA = [
       </ul>
     ),
   },
+  {
+    title: "Contributions",
+    id: "contributions",
+    content: (
+      <ul className="text-left list-none pl-0 space-y-3">
+        <li className="border-l-2 border-primary pl-3">
+          <h3 className="font-medium">
+            <a
+              href="https://github.com/public-apis/public-apis"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="hover:underline text-primary"
+            >
+              public-apis/public-apis
+            </a>
+          </h3>
+          <p className="text-default-500 text-sm">
+            Added the GridNews API to the curated list of free public APIs to promote open financial data.
+          </p>
+        </li>
+        <li className="border-l-2 border-primary pl-3">
+          <h3 className="font-medium">
+            <a
+              href="https://github.com/vinegarhq/sober"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="hover:underline text-primary"
+            >
+              vinegarhq/sober
+            </a>
+          </h3>
+          <p className="text-default-500 text-sm">
+            Troublesought and documented Linux Vulkan-specific crashes on NVIDIA driver setups.
+          </p>
+        </li>
+        <li className="border-l-2 border-primary pl-3">
+          <h3 className="font-medium">
+            <a
+              href="https://github.com/gorilla-devs/ferium"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="hover:underline text-primary"
+            >
+              gorilla-devs/ferium
+            </a>
+          </h3>
+          <p className="text-default-500 text-sm">
+            Participated in open-source discussions, issue reporting, and tracking for the CLI Minecraft mod manager written in Rust.
+          </p>
+        </li>
+      </ul>
+    ),
+  },
 ];
 
 export const TabContent = () => {
   const [activeTab, setActiveTab] = useState("about");
 
   return (
-    <div className="w-full max-w-2xl">
+    <div className="w-full max-w-2xl mx-auto text-left">
       <div className="flex flex-row mb-4 border-b border-default-200">
         {TAB_DATA.map((tab) => (
           <TabButton
