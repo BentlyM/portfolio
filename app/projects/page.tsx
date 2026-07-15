@@ -23,7 +23,6 @@ const projects: Project[] = [
     description:
       "Automated trading against Interactive Brokers: order management and Redis-locked execution workers in TypeScript, a Rust core for the trading engine, market-data and news ingestion, and a backtesting harness. Private repository — there's a video demo instead.",
     demoVideoUrl: "https://youtu.be/bHuXLNc-fPU",
-    image: "projects/Algo-trading.png",
     technologies: ["TypeScript", "Rust", "Redis", "Interactive Brokers API"],
   },
   {
