@@ -92,6 +92,21 @@ const TAB_DATA = [
         <li className="border-l-2 border-primary pl-3">
           <h3 className="font-medium">
             <a
+              href="https://github.com/stoqey/ibkr"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="hover:underline text-primary"
+            >
+              stoqey/ibkr
+            </a>
+          </h3>
+          <p className="text-default-500 text-sm">
+            Authored technical documentation detailing critical execution parameters and order configurations for the Interactive Brokers API.
+          </p>
+        </li>
+        <li className="border-l-2 border-primary pl-3">
+          <h3 className="font-medium">
+            <a
               href="https://github.com/public-apis/public-apis"
               target="_blank"
               rel="noreferrer noopener"
