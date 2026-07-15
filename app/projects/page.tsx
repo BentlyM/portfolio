@@ -18,8 +18,8 @@ interface Project {
 
 const projects: Project[] = [
   {
-    ticker: "ALGO",
-    title: "Algo Trading CLI",
+    ticker: "ARBT",
+    title: "Arbiter Execution Engine",
     description:
       "Automated trading against Interactive Brokers: order management and Redis-locked execution workers in TypeScript, a Rust core for the trading engine, market-data and news ingestion, and a backtesting harness. Private repository — there's a video demo instead.",
     demoVideoUrl: "https://youtu.be/bHuXLNc-fPU",
@@ -44,26 +44,7 @@ const projects: Project[] = [
     github: "https://github.com/BentlyM/rustiq",
     technologies: ["Rust", "Tokio", "SQLx", "Ratatui", "Plotters"],
   },
-  {
-    ticker: "SHIP",
-    title: "Battleship",
-    description:
-      "Two-player battleship in the browser. Real-time turns over Socket.io, ship placement and hit validation on the server, and games survive a refresh.",
-    link: "https://battleship-woad.vercel.app",
-    github: "https://github.com/BentlyM/battleship",
-    image: "projects/battleship-game.png",
-    technologies: ["Socket.io", "Next.js", "Neon"],
-  },
-  {
-    ticker: "LIBR",
-    title: "Library Management App",
-    description:
-      "Book catalog with borrowing, user accounts, Stripe-billed memberships, and an admin dashboard for managing the collection.",
-    link: "https://library-management-app-tau.vercel.app/",
-    github: "https://github.com/BentlyM/library-management-app-next",
-    image: "projects/library-management-app.png",
-    technologies: ["Next.js", "Stripe", "Supabase"],
-  },
+
   {
     ticker: "FOLIO",
     title: "This Site",
