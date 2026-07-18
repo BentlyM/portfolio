@@ -31,6 +31,6 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/bentlym",
     linkedin: "https://www.linkedin.com/in/bently-metayer-707364265",
     contact: "/contact",
-    resume: "/Bently_Resume.pdf",
+    resume: process.env.NODE_ENV === "production" ? "/portfolio/Bently_Resume.pdf" : "/Bently_Resume.pdf",
   },
 };

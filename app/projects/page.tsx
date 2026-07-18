@@ -1,5 +1,8 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { GithubIcon } from "@/components/icons";
+
+import gridNewsImg from "@/public/projects/grid-news.png";
+import portfolioImg from "@/public/projects/portfolio.png";
 
 interface Project {
   ticker: string;
@@ -12,7 +15,7 @@ interface Project {
   /** Video demo URL (e.g. YouTube); shown as "Watch demo" when set */
   demoVideoUrl?: string;
   /** Omit for a ticker-tile placeholder (private / backend-only projects) */
-  image?: string;
+  image?: string | StaticImageData;
   technologies: string[];
 }
 
@@ -32,7 +35,7 @@ const projects: Project[] = [
       "Financial news aggregation and streaming platform, live at gridnews.io. A Turborepo monorepo with four services — API, frontend, stream, worker — on a Rust backend, containerized with Docker.",
     link: "https://www.gridnews.io/",
     github: "https://github.com/gridnews",
-    image: "projects/grid-news.png",
+    image: gridNewsImg,
     technologies: ["Rust", "Next.js", "PostgreSQL", "Docker"],
   },
   {
@@ -51,7 +54,7 @@ const projects: Project[] = [
       "Statically exported Next.js on GitHub Pages — no backend, nothing to silently fail. The contact address is assembled client-side so scrapers can't lift it.",
     link: "https://bentlym.github.io/portfolio",
     github: "https://github.com/bentlym/portfolio",
-    image: "projects/portfolio.png",
+    image: portfolioImg,
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
   },
 ];

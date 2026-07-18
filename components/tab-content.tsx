@@ -23,7 +23,7 @@ const TAB_DATA = [
         {[
           "TypeScript",
           "Rust",
-          "Python",
+          "C++",
           "Next.js",
           "Node.js",
           "PostgreSQL",
@@ -33,6 +33,9 @@ const TAB_DATA = [
           "Ratatui",
           "WebSockets",
           "Turborepo",
+          "WebAssembly",
+          "Linux/Unix",
+          "Git",
         ].map((skill) => (
           <li
             key={skill}
