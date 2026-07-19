@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build-resume": "pdflatex -interaction=nonstopmode main.tex && mv main.pdf public/Bently_Resume.pdf && rm -f main.aux main.log main.out"
   },
   "dependencies": {
     "@heroui/button": "2.2.17",

@@ -40,10 +40,10 @@ const projects: Project[] = [
   },
   {
     ticker: "RSTQ",
-    title: "Rustiq (In Development)",
+    title: "Rustiq",
     description:
       "A fast, terminal-based stock screener built in Rust. Configured with an asynchronous Tokio runtime and Reqwest for low-latency market data ingestion, custom filters (like RSI and P/E ratios), SQLx with SQLite for persistent local caching, and a Ratatui-based CLI dashboard with Plotters charting.",
-    github: "https://github.com/BentlyM/rustiq",
+    github: "https://github.com/gridnews/rustiq",
     technologies: ["Rust", "Tokio", "SQLx", "Ratatui", "Plotters"],
   },
 
