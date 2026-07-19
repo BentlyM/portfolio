@@ -3,6 +3,7 @@ import { GithubIcon } from "@/components/icons";
 
 import gridNewsImg from "@/public/projects/grid-news.png";
 import portfolioImg from "@/public/projects/portfolio.png";
+import rustiqImg from "@/public/projects/rustiq.png";
 
 interface Project {
   ticker: string;
@@ -44,7 +45,8 @@ const projects: Project[] = [
     description:
       "A fast, terminal-based stock screener built in Rust. Configured with an asynchronous Tokio runtime and Reqwest for low-latency market data ingestion, custom filters (like RSI and P/E ratios), SQLx with SQLite for persistent local caching, and a Ratatui-based CLI dashboard with Plotters charting.",
     github: "https://github.com/gridnews/rustiq",
-    technologies: ["Rust", "Tokio", "SQLx", "Ratatui", "Plotters"],
+    image: rustiqImg,
+    technologies: ["Rust", "Tokio", "SQLx", "Ratatui"],
   },
 
   {
