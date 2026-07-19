@@ -37,3 +37,10 @@ next-env.d.ts
 
 # personal screenshots (may contain private info)
 Screenshot*.png
+
+# LaTeX build files
+main.pdf
+main.aux
+main.log
+main.out
+
