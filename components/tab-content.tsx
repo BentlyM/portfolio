@@ -25,6 +25,9 @@ const TAB_DATA = [
           "Rust",
           "C++",
           "Next.js",
+          "React",
+          "WebAssembly",
+          "Transformers.js",
           "Tailwind CSS",
           "Node.js",
           "PostgreSQL",
@@ -33,10 +36,10 @@ const TAB_DATA = [
           "Docker",
           "Tokio",
           "SQLx",
+          "Serde",
           "Ratatui",
           "WebSockets",
           "Turborepo",
-          "WebAssembly",
           "Linux/Unix",
           "Git",
         ].map((skill) => (
@@ -70,21 +73,33 @@ const TAB_DATA = [
     content: (
       <ul className="text-left list-none pl-0 space-y-2">
         <li className="border-l-2 border-primary pl-3">
-          <h3 className="font-medium">Market infrastructure</h3>
+          <h3 className="font-medium">Systems & Performance Engineering</h3>
           <p className="text-default-500 text-sm">
-            Order routing and execution against Interactive Brokers
+            Memory-safe concurrency, lock-free data structures, and low-latency execution engines in Rust.
           </p>
         </li>
         <li className="border-l-2 border-primary pl-3">
-          <h3 className="font-medium">Systems & TUI programming</h3>
+          <h3 className="font-medium">Distributed Systems & Data Pipelines</h3>
           <p className="text-default-500 text-sm">
-            Rust services for streaming, data-heavy backends, and terminal tools (Ratatui)
+            High-throughput event streaming, message buses, and scalable web scraper architectures.
           </p>
         </li>
         <li className="border-l-2 border-primary pl-3">
-          <h3 className="font-medium">Real-time networking</h3>
+          <h3 className="font-medium">Edge Computing & Client-side AI</h3>
           <p className="text-default-500 text-sm">
-            WebSocket streaming, multiplayer game state (Battleship)
+            Running machine learning models locally via WebAssembly and Web Workers for data analysis and visualization.
+          </p>
+        </li>
+        <li className="border-l-2 border-primary pl-3">
+          <h3 className="font-medium">Data Ingestion & Simulation</h3>
+          <p className="text-default-500 text-sm">
+            Building custom zero-dependency tokenizers, local market simulators, and text analysis tools.
+          </p>
+        </li>
+        <li className="border-l-2 border-primary pl-3">
+          <h3 className="font-medium">Hardware Interfacing & Control Logic</h3>
+          <p className="text-default-500 text-sm">
+            Developing software to drive physical systems, automate equipment operations, and monitor hardware states.
           </p>
         </li>
       </ul>
