@@ -15,6 +15,8 @@ interface Project {
   github?: string;
   /** Video demo URL (e.g. YouTube); shown as "Watch demo" when set */
   demoVideoUrl?: string;
+  /** Newer video demo URL; when set alongside demoVideoUrl, the old one is labeled as outdated */
+  newDemoVideoUrl?: string;
   /** Omit for a ticker-tile placeholder (private / backend-only projects) */
   image?: string | StaticImageData;
   technologies: string[];
@@ -27,6 +29,7 @@ const projects: Project[] = [
     description:
       "Automated trading against Interactive Brokers: order management and Redis-locked execution workers in TypeScript, a Rust core for the trading engine, market-data and news ingestion, and a backtesting harness. Private repository — there's a video demo instead.",
     demoVideoUrl: "https://youtu.be/bHuXLNc-fPU",
+    newDemoVideoUrl: "https://youtu.be/nls2Fo8oOzQ?si=c8UAZY8nYMSGk1QV",
     technologies: ["TypeScript", "Rust", "Redis", "Interactive Brokers API"],
   },
   {
@@ -153,25 +156,50 @@ export default function Projects() {
                     {project.description}
                   </p>
 
-                  {project.demoVideoUrl && (
-                    <a
-                      className="mt-2 inline-flex items-center gap-1.5 font-mono text-sm text-primary hover:underline underline-offset-4"
-                      href={project.demoVideoUrl}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path d="M8 5v14l11-7z"></path>
-                      </svg>
-                      Watch demo
-                    </a>
+                  {(project.newDemoVideoUrl || project.demoVideoUrl) && (
+                    <div className="mt-2 flex flex-col items-start gap-1">
+                      {project.newDemoVideoUrl && (
+                        <a
+                          className="inline-flex items-center gap-1.5 font-mono text-sm text-primary hover:underline underline-offset-4"
+                          href={project.newDemoVideoUrl}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M8 5v14l11-7z"></path>
+                          </svg>
+                          (NEW) Watch demo
+                        </a>
+                      )}
+
+                      {project.demoVideoUrl && (
+                        <a
+                          className="inline-flex items-center gap-1.5 font-mono text-xs text-default-500 hover:underline underline-offset-4"
+                          href={project.demoVideoUrl}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M8 5v14l11-7z"></path>
+                          </svg>
+                          Watch demo (older version)
+                        </a>
+                      )}
+                    </div>
                   )}
 
                   <ul
