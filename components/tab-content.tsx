@@ -9,10 +9,32 @@ const TAB_DATA = [
     title: "About",
     id: "about",
     content: (
-      <p>
-        CS student at Broward College (aspiring University of Florida transfer).
-        My focus is on low-latency systems and data-heavy applications. I enjoy working across the stack, but I&apos;m most interested in backend and systems architecture.
-      </p>
+      <div className="space-y-3">
+        <p>
+          CS student at Broward College (aspiring University of Florida transfer).
+          My focus is on low-latency systems and data-heavy applications. I enjoy working across the stack, but I&apos;m most interested in backend and systems architecture.
+        </p>
+        <div>
+          <a
+            className="inline-flex items-center gap-1.5 font-mono text-sm text-primary hover:underline underline-offset-4"
+            href="https://youtu.be/-UtGD6xY0Lg"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            Introduction Video
+          </a>
+        </div>
+      </div>
     ),
   },
   {
