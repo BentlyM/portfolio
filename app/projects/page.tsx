@@ -17,6 +17,10 @@ interface Project {
   demoVideoUrl?: string;
   /** Newer video demo URL; when set alongside demoVideoUrl, the old one is labeled as outdated */
   newDemoVideoUrl?: string;
+  /** Video proving customer base */
+  customerBaseVideoUrl?: string;
+  /** Upcoming demo video placeholder URL */
+  upcomingDemoVideoUrl?: string;
   /** Omit for a ticker-tile placeholder (private / backend-only projects) */
   image?: string | StaticImageData;
   technologies: string[];
@@ -39,6 +43,8 @@ const projects: Project[] = [
       "Financial news aggregation and streaming platform, live at gridnews.io. A Turborepo monorepo with four services — API, frontend, stream, worker — on a Rust backend, containerized with Docker.",
     link: "https://www.gridnews.io/",
     github: "https://github.com/gridnews",
+    customerBaseVideoUrl: "https://youtu.be/5lU3yUHRs6k",
+    upcomingDemoVideoUrl: "#",
     image: gridNewsImg,
     technologies: ["Rust", "Next.js", "PostgreSQL", "Docker"],
   },
@@ -66,25 +72,24 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <section className="flex flex-col items-center justify-center py-8 md:py-10">
+    <section className="flex flex-col items-center justify-center py-0 md:py-2">
       <div className="w-full px-4">
-        <ul className="mt-8">
+        <ul className="mt-2">
           {projects.map((project) => (
-            <li key={project.ticker} className="mb-12">
+            <li key={project.ticker} className="mb-6">
               <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                 {/* Hover background effect */}
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-default-100/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
 
                 {/* Project image / ticker tile */}
-                <div className="z-10 sm:order-1 sm:col-span-2 relative">
-                  <div className="aspect-[16/9] w-full rounded-md border border-default-200 bg-default-100 overflow-hidden flex items-center justify-center">
+                <div className="z-10 sm:order-1 sm:col-span-2 relative flex flex-col justify-center">
+                  <div className="aspect-[16/9] w-full rounded-md border border-default-200 bg-default-100 overflow-hidden flex items-center justify-center relative group/image">
                     {project.image ? (
                       <Image
                         src={project.image}
                         alt={`${project.title} preview`}
-                        width={200}
-                        height={113}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover object-center"
                         unoptimized
                       />
                     ) : (
@@ -97,18 +102,19 @@ export default function Projects() {
                         </span>
                       </div>
                     )}
+                    
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="absolute z-20 bottom-3 right-3 p-2 rounded-md bg-background/80 border border-default-200 hover:border-primary transition-colors"
+                        aria-label={`View ${project.title} on GitHub`}
+                      >
+                        <GithubIcon size={20} />
+                      </a>
+                    )}
                   </div>
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="absolute bottom-3 right-3 p-2 rounded-md bg-background/80 border border-default-200 hover:border-primary transition-colors"
-                      aria-label={`View ${project.title} on GitHub`}
-                    >
-                      <GithubIcon size={20} />
-                    </a>
-                  )}
                 </div>
 
                 {/* Project details */}
@@ -156,8 +162,8 @@ export default function Projects() {
                     {project.description}
                   </p>
 
-                  {(project.newDemoVideoUrl || project.demoVideoUrl) && (
-                    <div className="mt-2 flex flex-col items-start gap-1">
+                  {(project.newDemoVideoUrl || project.demoVideoUrl || project.customerBaseVideoUrl || project.upcomingDemoVideoUrl) && (
+                    <div className="mt-2 flex flex-col items-start gap-1 relative z-20">
                       {project.newDemoVideoUrl && (
                         <a
                           className="inline-flex items-center gap-1.5 font-mono text-sm text-primary hover:underline underline-offset-4"
@@ -199,11 +205,53 @@ export default function Projects() {
                           Watch demo (older version)
                         </a>
                       )}
+
+                      {project.customerBaseVideoUrl && (
+                        <a
+                          className="inline-flex items-center gap-1.5 font-mono text-sm text-primary hover:underline underline-offset-4"
+                          href={project.customerBaseVideoUrl}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M8 5v14l11-7z"></path>
+                          </svg>
+                          Watch customer base proof
+                        </a>
+                      )}
+
+                      {project.upcomingDemoVideoUrl && (
+                        <a
+                          className="inline-flex items-center gap-1.5 font-mono text-sm text-default-500 hover:underline underline-offset-4"
+                          href={project.upcomingDemoVideoUrl}
+                          target={project.upcomingDemoVideoUrl !== "#" ? "_blank" : undefined}
+                          rel={project.upcomingDemoVideoUrl !== "#" ? "noreferrer noopener" : undefined}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M8 5v14l11-7z"></path>
+                          </svg>
+                          Upcoming demo video (Coming Soon)
+                        </a>
+                      )}
                     </div>
                   )}
 
                   <ul
-                    className="mt-3 flex flex-wrap gap-2"
+                    className="mt-3 flex flex-wrap gap-2 relative z-20"
                     aria-label="Technologies used:"
                   >
                     {project.technologies.map((tech) => (
