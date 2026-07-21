@@ -5,6 +5,7 @@ const nextConfig = {
   assetPrefix: process.env.NODE_ENV === "production" ? "/portfolio/" : "",
   output: "export",
   distDir: "dist",
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
