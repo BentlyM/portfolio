@@ -44,7 +44,7 @@ const projects: Project[] = [
     link: "https://www.gridnews.io/",
     github: "https://github.com/gridnews",
     customerBaseVideoUrl: "https://youtu.be/5lU3yUHRs6k",
-    upcomingDemoVideoUrl: "#",
+    demoVideoUrl: "https://youtu.be/BNmWov-lonA",
     image: gridNewsImg,
     technologies: ["Rust", "Next.js", "PostgreSQL", "Docker"],
   },
@@ -187,22 +187,22 @@ export default function Projects() {
 
                       {project.demoVideoUrl && (
                         <a
-                          className="inline-flex items-center gap-1.5 font-mono text-xs text-default-500 hover:underline underline-offset-4"
+                          className={`inline-flex items-center gap-1.5 font-mono ${project.newDemoVideoUrl ? "text-xs text-default-500" : "text-sm text-primary"} hover:underline underline-offset-4`}
                           href={project.demoVideoUrl}
                           target="_blank"
                           rel="noreferrer noopener"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            width="12"
-                            height="12"
+                            width={project.newDemoVideoUrl ? "12" : "14"}
+                            height={project.newDemoVideoUrl ? "12" : "14"}
                             viewBox="0 0 24 24"
                             fill="currentColor"
                             aria-hidden="true"
                           >
-                            <path d="M8 5v14l11-7z"></path>
+                            <path d="M8 5v14l11-7z" />
                           </svg>
-                          Watch demo (older version)
+                          {project.newDemoVideoUrl ? "Watch demo (older version)" : "Watch demo"}
                         </a>
                       )}
 
